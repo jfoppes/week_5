@@ -1,5 +1,5 @@
 #!usr/bin/env python3
-# week 5 project : Create an account 
+# week 5 project : Secure Drive
 
 '''This Prokect ewill alloow a user to create an accoun that is stored in a dictionary
 the user will then login and be able to access theier files '''
@@ -17,15 +17,25 @@ def mkaccount(): # if the user does not ahve a accoun t they can make one
 def accessFiles(): # once account created and or logged in, user can access thier files 
     pass
 
-while True: # this while loop will handle user input from the welcome function  user input 
-    action = input("\nWelcome to the Reservation Portal!\n \n What would you like to do? \n \n View: View All Sites \n Reserve: Reserve A Site \n Cancel: Cancel a Reservation \n Exit: Exit Reservation System\n\n").lower()
+while True: # this while loop will handle user input from the welcome function and login/ new account functions
+    action = input("\nWelcome to SecureDrive!\n \n What would you like to do? \n \n Login? or create an account?\n\n Type Login or NewUser").lower()
     if action == "login":
         login()        
-    elif action == "NewUser":
-        mkaccount()  
-    elif action == "access":
-        accessFiles()
+    elif action == "newuser":
+        mkaccount()
     elif action == "exit":
         break
     else: 
         print("Please enter a valid choice")
+        
+while True: # this is where the logged in user  user will be able to view thier files and open them 
+    action = input("What would you like to do? View Files:(View), Open a file (Open), oe Exit(Exit)")
+    if action == "view":
+        view()        
+    elif action == "open":
+        openf()
+    elif action == "exit":
+        break
+    else: 
+        print("Please enter a valid choice")
+        
