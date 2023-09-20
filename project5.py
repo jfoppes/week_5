@@ -29,11 +29,13 @@ while True: # this while loop will handle user input from the welcome function a
         print("Please enter a valid choice")
         
 while True: # this is where the logged in user  user will be able to view thier files and open them 
-    action = input("What would you like to do? View Files:(View), Open a file (Open), oe Exit(Exit)")
+    action = input("What would you like to do? View Files:(View), Delete a file (Delete), Create a new file (New) or Exit(Exit)").lower()
     if action == "view":
         view()        
-    elif action == "open":
-        openf()
+    elif action == "delete":
+        delete()
+    elif action == "new":
+        new()    
     elif action == "exit":
         break
     else: 
