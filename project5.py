@@ -94,7 +94,7 @@ def view():
     os.chdir("usrDrives/" + auth_usr)
     
     while True:
-        dirList = os.listdir()
+        dirList = os.listdir()# Create a list with the names of all the files in the current directory 
         print("Files:\n",dirList)
         fileName = input("\nType the file name you would like to view or type 'exit'\n")
         if fileName == "exit":
@@ -116,7 +116,7 @@ def delete():
     owd = os.getcwd() # save root directory for use later 
     os.chdir("usrDrives/" + auth_usr)
     while True:
-        dirList = os.listdir()
+        dirList = os.listdir() #Create a list with the names of all the files in the current directory 
         print("Files:\n",dirList)
         fileName = input("\nType the file name you would like to delete or type 'exit' \n\n")
         if fileName == "exit":
@@ -140,7 +140,7 @@ def new():
     print("Your Files:\n")
     os.chdir("usrDrives/" + auth_usr)
     while True:
-        dirList = os.listdir()
+        dirList = os.listdir() # Create a list with the names of all the files in the current directory 
         print("Files:\n",dirList)
         fileName = input("What would you like to call your file? Type 'Exit' to cancel\n\n")
         if fileName == "exit":
