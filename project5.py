@@ -87,9 +87,10 @@ def mkaccount(): # if the user does not have an account they can make one
 
 welcome()
 
-     
+'''View will open currently exiting files '''
 def view():
     print("Your Files:\n")
+    owd = os.getcwd()
     os.chdir("usrDrives/" + auth_usr)
     
     while True:
@@ -97,7 +98,7 @@ def view():
         print("Files:\n",dirList)
         fileName = input("\nType the file name you would like to view or type 'exit'\n")
         if fileName == "exit":
-            pass
+            break
         elif fileName not in dirList:
             print("Please enter a valid file name\n")
             continue
@@ -105,18 +106,58 @@ def view():
             print("\n",fileName,";\n\n\n")
             file = open(fileName)
             print(file.read(),"\n\n")
+            time.sleep(2)
+    os.chdir(owd)# move back to main progrma direcrory 
     
-
+'''Deleete will allow usere to select and deletea fiale'''
     
 def delete():
-    filename = input("Type The File name you would like to delete")
-    pass
-    
+    print("Your Files:\n")
+    owd = os.getcwd() # save root directory for use later 
+    os.chdir("usrDrives/" + auth_usr)
+    while True:
+        dirList = os.listdir()
+        print("Files:\n",dirList)
+        fileName = input("\nType the file name you would like to delete or type 'exit' \n\n")
+        if fileName == "exit":
+            break
+        elif fileName not in dirList:
+            print("Please enter a valid file name\n")
+            continue
+        else:
+            sure = input(("Are you sure you want to delete ", fileName,"?/n Yes/No \n")).lower()
+            if sure == "yes":
+                os.remove(fileName) #delete file
+                print("\n",fileName," Deleted")
+                time.sleep(1)
+            else:
+                break
+    os.chdir(owd)# move back to root program direcrory 
+            
+'''new will help user creat a new file'''
 def new():
-    filname = input("What woukd you like to call your file?")
-    pass
+    owd = os.getcwd()
+    print("Your Files:\n")
+    os.chdir("usrDrives/" + auth_usr)
+    while True:
+        dirList = os.listdir()
+        print("Files:\n",dirList)
+        fileName = input("What would you like to call your file? Type 'Exit' to cancel\n\n")
+        if fileName == "exit":
+            pass
+        elif fileName in dirList:
+            print("Name in use. Please chose a new file name\n")
+            continue
+        else:
+            newfile = open(fileName,"w") #create new file 
+            fileData = input(("Write or paste the data for ", fileName, "below: \n"))
+            newfile.write(fileData) # write to mneyl created file 
+            print("\n",fileName," Created, and saved")
+            break
+    os.chdir(owd)# move back to main progrma direcrory 
+    time.sleep(1)
 
-print(auth_usr)
+'''This is the wile loop tha twill keep the user engaded with the program untill they log out or quit '''
 while True: # this is where the logged in user  user will be able to view thier files and open them 
     action = str(input("What would you like to do? View Files:(View), Delete a file (Delete), Create a new file (New), Logout, (Logout)or Exit(Exit)\n\n")).lower()
     if action == "view":
