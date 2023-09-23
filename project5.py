@@ -10,6 +10,7 @@ with open("accounts.txt") as auth:
         (usr,pw) = line.split()# Create tuple of username/pw combo 
         accounts[(usr)] = pw #break the tuple in to doctiuonary key,value
 import time
+
 def welcome(): # this is where the user will be greeeted and asked to login or create account 
     print("\n\nSecure Drive")
     while True: # this while loop will handle user input and call login/ new account functions
@@ -67,15 +68,58 @@ def accessFiles(): # once account created and or logged in, user can access thie
         pass
 
 
-welcome()   
+welcome()
+
+'''class Files(action2):
+    def __init___(self, action, view, delete, new):
+        self.action = action
+        self.view = view()
+        self.delete = delete()
+        self.new = new()
+        
+    def view(self):
+        print("Type the file name you would like to view")
+        pass
+    
+    def delete(self):
+        print("Type The File name you would like to delete")
+        pass
+    
+    def new(self):
+        print("What woukd you like to call your file?")
+        pass'''
+
+
 while True: # this is where the logged in user  user will be able to view thier files and open them 
-    action = input("What would you like to do? View Files:(View), Delete a file (Delete), Create a new file (New) or Exit(Exit)\n\n").lower()
+    action = str(input("What would you like to do? View Files:(View), Delete a file (Delete), Create a new file (New) or Exit(Exit)\n\n")).lower()
+    class Files(action):
+        def __init___(self, action, view, delete, new):
+            self.action = action
+            self.view = view()
+            self.delete = delete()
+            self.new = new()
+        
+        def view(self):
+            print("Type the file name you would like to view")
+            pass
+    
+        def delete(self):
+            print("Type The File name you would like to delete")
+            pass
+    
+        def new(self):
+            print("What woukd you like to call your file?")
+            pass
+        
     if action == "view":
-        view()        
+        request = Files(action)  
+        request.view()      
     elif action == "delete":
-        delete()
+        request = Files(action)  
+        request.delete()
     elif action == "new":
-        new()    
+         request = Files(action)  
+         request.new()    
     elif action == "exit":
         break
     else: 
