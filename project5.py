@@ -1,5 +1,7 @@
 #!usr/bin/env python3
 # week 5 project : Secure Drive
+import time
+import sys, os
 
 '''This Prokect ewill alloow a user to create an accoun that is stored in a dictionary
 the user will then login and be able to access theier files '''
@@ -9,7 +11,7 @@ with open("accounts.txt") as auth:
     for line in auth:
         (usr,pw) = line.split()# Create tuple of username/pw combo 
         accounts[(usr)] = pw #break the tuple in to doctiuonary key,value
-import time
+
 
 def welcome(): # this is where the user will be greeeted and asked to login or create account 
     print("\n\nSecure Drive")
@@ -60,6 +62,7 @@ def mkaccount(): # if the user does not have an account they can make one
             accounts[nusername] = npassword
             print("Account creation sucessfull. Logged in as:", nusername,"\n")
             break
+    os.mkdir()    ####Crates new folder for user 
                 
 
 def accessFiles(): # once account created and or logged in, user can access thier files 
@@ -70,56 +73,28 @@ def accessFiles(): # once account created and or logged in, user can access thie
 
 welcome()
 
-'''class Files(action2):
-    def __init___(self, action, view, delete, new):
-        self.action = action
-        self.view = view()
-        self.delete = delete()
-        self.new = new()
         
-    def view(self):
-        print("Type the file name you would like to view")
-        pass
+def view():
+    fileName = input("Type the file name you would like to view")
+    pass
     
-    def delete(self):
-        print("Type The File name you would like to delete")
-        pass
+def delete():
+    filename = input("Type The File name you would like to delete")
+    pass
     
-    def new(self):
-        print("What woukd you like to call your file?")
-        pass'''
+def new():
+    filname = input("What woukd you like to call your file?")
+    pass
 
 
 while True: # this is where the logged in user  user will be able to view thier files and open them 
     action = str(input("What would you like to do? View Files:(View), Delete a file (Delete), Create a new file (New) or Exit(Exit)\n\n")).lower()
-    class Files(action):
-        def __init___(self, action, view, delete, new):
-            self.action = action
-            self.view = view()
-            self.delete = delete()
-            self.new = new()
-        
-        def view(self):
-            print("Type the file name you would like to view")
-            pass
-    
-        def delete(self):
-            print("Type The File name you would like to delete")
-            pass
-    
-        def new(self):
-            print("What woukd you like to call your file?")
-            pass
-        
     if action == "view":
-        request = Files(action)  
-        request.view()      
+        view()
     elif action == "delete":
-        request = Files(action)  
-        request.delete()
+        delete()
     elif action == "new":
-         request = Files(action)  
-         request.new()    
+         new()  
     elif action == "exit":
         break
     else: 
